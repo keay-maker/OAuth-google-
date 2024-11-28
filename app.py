@@ -5,8 +5,10 @@ from authlib.integrations.flask_client import OAuth
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('APP_SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///login.db'
+
+# Set a secret key for the session
+secret_key = os.getenv('APP_SECRET_KEY')
 
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
