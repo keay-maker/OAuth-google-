@@ -6,7 +6,9 @@ import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///login.db'
-app.secret_key = os.getenv('APP_SECRET_KEY', 'default_fallback_secret_key')
+app.secret_key = 'a_secure_random_key'  # Required for sessions
+app.config['SESSION_TYPE'] = 'filesystem'
+session(app)
 
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
